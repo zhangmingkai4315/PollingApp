@@ -1,0 +1,37 @@
+{
+  "name": "PollingApp",
+  "version": "0.0.1",
+  "description": "This is a polling system using reactjs, nodejs and socket.io ",
+  "main": "app.js",
+  "scripts": {
+    "prestart":"webpack",
+    "start":"node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangmingkai4315/PollingApp.git"
+  },
+  "keywords": [
+    "react.js",
+    "node",
+    "socket.io",
+    "bootstrap"
+  ],
+  "author": "Mike Zhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhangmingkai4315/PollingApp/issues"
+  },
+  "homepage": "https://github.com/zhangmingkai4315/PollingApp",
+  "dependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "bootstrap": "^3.3.5",
+    "express": "^4.13.3",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "webpack": "^1.12.8"
+  }
+}
