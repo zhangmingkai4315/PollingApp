@@ -14,7 +14,9 @@ var App = React.createClass({
       title:"",
       member:{},
       audience:[],
-      speaker:{}
+      speaker:{},
+      questions:[],
+      currentQuestion:false
     }
   }
   ,
@@ -25,21 +27,22 @@ var App = React.createClass({
     this.socket.on('welcome',this.updateState);
     this.socket.on('joined',this.joined);
     this.socket.on('audience',this.updateAudience);
-    this.socket.on('start',this.updateState);
-  },
-  start(){
-
+    this.socket.on('start',this.start);
+    this.socket.on('end',this.updateState);
+    this.socket.on('ask',this.ask);
   },
   connect(){
     var member=(sessionStorage.member)?JSON.parse(sessionStorage.member):null;
-    if(member){
+    if(member && member.type==='member'){
       this.emit('join',member);
+    }else if(member&& member.type==='speaker'){
+      this.emit('start',{name:member.name,title:sessionStorage.title});
     }
-    console.log("Connected:"+this.socket.id);
+    // console.log("Connected:"+this.socket.id);
     this.setState({status:'Connected'});
   },
   disconnect(){
-    this.setState({status:'Disconnected'});
+    this.setState({status:'Disconnected',title:"Disconnected",speaker:''});
   },
   updateState(state){
     this.setState(state);
@@ -57,6 +60,16 @@ var App = React.createClass({
   },
   updateAudience(data){
     this.setState({audience:data});
+  },
+  start(presentation){
+    sessionStorage.title = presentation.title;
+    this.setState(presentation);
+    console.log(this.state);
+  },
+  ask(question){
+    console.log(question);
+    this.setState({currentQuestion:question});
+    sessionStorage.answer='';
   },
   render() {
     console.log(this.state);
