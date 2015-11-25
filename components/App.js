@@ -16,7 +16,8 @@ var App = React.createClass({
       audience:[],
       speaker:{},
       questions:[],
-      currentQuestion:false
+      currentQuestion:false,
+      results:{}
     }
   }
   ,
@@ -30,6 +31,7 @@ var App = React.createClass({
     this.socket.on('start',this.start);
     this.socket.on('end',this.updateState);
     this.socket.on('ask',this.ask);
+    this.socket.on('results',this.updateResult);
   },
   connect(){
     var member=(sessionStorage.member)?JSON.parse(sessionStorage.member):null;
@@ -68,8 +70,12 @@ var App = React.createClass({
   },
   ask(question){
     console.log(question);
-    this.setState({currentQuestion:question});
     sessionStorage.answer='';
+    this.setState({currentQuestion:question});
+  },
+  updateResult(data){
+    debugger
+    this.setState({results:data});
   },
   render() {
     console.log(this.state);

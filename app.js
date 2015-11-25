@@ -2,6 +2,15 @@ var express = require('express');
 var _ = require('underscore');
 var app = express();
 var currentQuestion=false;
+
+var results={
+  a:0,
+  b:0,
+  c:0,
+  d:0
+};
+
+
 // 保存当前的连接对象
 var connections = [];
 var audience = [];
@@ -49,7 +58,8 @@ io.sockets.on('connection', function(socket) {
         audience: audience,
         speaker: speaker,
         questions:questions,
-        currentQuestion:currentQuestion
+        currentQuestion:currentQuestion,
+        results:results
     });
     socket.on('join', function(data) {
         var newMember = {
@@ -78,10 +88,16 @@ io.sockets.on('connection', function(socket) {
 
     socket.on("ask",function (question) {
       currentQuestion=question;
+      results={a:0,b:0,c:0,d:0};
       io.sockets.emit('ask',currentQuestion);
       console.log("Ask :"+currentQuestion);
     });
 
+    socket.on('answer',function (payload) {
+      results[payload.choice]++;
+      io.sockets.emit('results',results);
+      console.log("Answer:'%s' -'%j'",payload.choice,results);
+    })
 
     connections.push(socket);
     console.log("Connection :" + socket.id);

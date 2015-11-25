@@ -5,10 +5,9 @@ var Ask=React.createClass({
   getInitialState(){
     return{
       choices:[],
-      answer:'null'
+      answer:undefined
     }
   },
-
   componentWillMount(){
     this.setUpChoices();
   },
@@ -43,16 +42,15 @@ var Ask=React.createClass({
     }else{
       question=this.props.question;
     }
-    debugger;
     return(
       <div id="currentQuestions">
         <h2>{question.q}</h2>
-        <Display if={this.state.answer==='null'}>
+        <Display if={this.state.answer===''}>
           <div className="row">
             {this.state.choices.map(this.addChoiceButton)};
           </div>
         </Display>
-        <Display if={!this.state.answer!=='null'}>
+        <Display if={!this.state.answer!==''}>
           <div className="row">
             <h3>You have made the choice: {this.state.answer}</h3>
           </div>
