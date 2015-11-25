@@ -1,6 +1,7 @@
-var React=require('react');
-var ReactDOM=require('react-dom');
-var Link=require('react-router').Link;
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {Link} from 'react-router'
+
 var Join=React.createClass({
   join(){
       var name=this.refs.username.value;

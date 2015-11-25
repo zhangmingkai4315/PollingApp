@@ -1,17 +1,12 @@
 
-var React=require('react');
-var ReactDOM=require('react-dom');
-var ReactRouter=require('react-router');
-var APP=require('./components/App.js'),
-    Audience=require('./components/Audience'),
-    Board=require('./components/Board'),
-    Speaker=require('./components/Speaker'),
-    Whoops404=require('./components/Whoops404');
-var Router=ReactRouter.Router,
-    Route=ReactRouter.Route,
-    IndexRoute=ReactRouter.IndexRoute,
-    NotFoundRoute=Router.NotFoundRoute;
-
+import React from 'react'
+import ReactDOM from 'react-dom'
+import APP from './components/App.js'
+import Audience from './components/Audience'
+import Board from './components/Board'
+import Speaker from './components/Speaker'
+import Whoops404 from './components/Whoops404'
+import {Router,Route,IndexRoute,NotFoundRoute} from 'react-router';
 
 ReactDOM.render((
 <Router>

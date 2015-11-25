@@ -1,17 +1,8 @@
-var React = require('react');
+import React from 'react'
 var PropTypes = React.PropTypes;
 
-var Header = React.createClass({
-  propTypes:{
-    title:PropTypes.string.isRequired
-  },
-  getDefaultProps(){
-    return({
-      title:"",
-      speaker:{name:""},
-      status:"Disconnected"
-    });
-  },
+class Header extends React.Component{
+
   render () {
     return (
       <header>
@@ -21,6 +12,21 @@ var Header = React.createClass({
       </header>
     )
   }
-});
+}
+
+Header.propTypes={
+  title:PropTypes.string.isRequired
+};
+Header.defaultProps={
+    title:"",
+    speaker:{name:""},
+    status:"Disconnected"
+};
+
+
+
+
+
+
 
 module.exports = Header;

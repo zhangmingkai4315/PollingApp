@@ -1,6 +1,6 @@
-var React = require('react');
-var _=require('underscore');
-var Display=require('./Display');
+import React from 'react'
+import _ from 'underscore'
+import Display from './Display'
 var Ask=React.createClass({
   getInitialState(){
     return{
