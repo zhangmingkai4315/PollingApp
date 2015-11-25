@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 var PropTypes = React.PropTypes;
 
 var Display = React.createClass({

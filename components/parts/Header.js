@@ -2,7 +2,6 @@ import React from 'react'
 var PropTypes = React.PropTypes;
 
 class Header extends React.Component{
-
   render () {
     return (
       <header>
